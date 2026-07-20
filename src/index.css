@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #12182B;
+  color: #F2EDE1;
+}
+
+/* perforated ticket edge */
+.perforated {
+  position: relative;
+}
+.perforated::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent 0, transparent 6px, #12182B 6px, #12182B 12px);
+  background-size: 12px 1px;
+  background-repeat: repeat-x;
+}
+
+.notch-left::after,
+.notch-right::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background: #12182B;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+.notch-left::after { left: -12px; }
+.notch-right::after { right: -12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #C9A876;
+  outline-offset: 2px;
+}
