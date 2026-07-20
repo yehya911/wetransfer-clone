@@ -7,39 +7,35 @@ html, body, #root {
 }
 
 body {
-  background-color: #12182B;
-  color: #F2EDE1;
+  background-color: #F3F5F8;
+  color: #10131A;
 }
 
-/* perforated ticket edge */
-.perforated {
+/* Subtle die-cut edge for the tracking-code ticket, kept quiet on purpose */
+.ticket-notch {
   position: relative;
 }
-.perforated::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, transparent 0, transparent 6px, #12182B 6px, #12182B 12px);
-  background-size: 12px 1px;
-  background-repeat: repeat-x;
-}
-
-.notch-left::after,
-.notch-right::after {
+.ticket-notch::before,
+.ticket-notch::after {
   content: '';
   position: absolute;
   top: 50%;
-  width: 24px;
-  height: 24px;
-  background: #12182B;
+  width: 20px;
+  height: 20px;
+  background: #F3F5F8;
   border-radius: 999px;
   transform: translateY(-50%);
 }
-.notch-left::after { left: -12px; }
-.notch-right::after { right: -12px; }
+.ticket-notch::before { left: -10px; }
+.ticket-notch::after { right: -10px; }
+
+.ticket-tear {
+  background-image: repeating-linear-gradient(to right, #E3E7EE 0, #E3E7EE 6px, transparent 6px, transparent 12px);
+  background-size: 12px 1px;
+  background-repeat: repeat-x;
+  background-position: top;
+  height: 1px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -50,6 +46,10 @@ body {
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid #C9A876;
+  outline: 2px solid #3654FF;
   outline-offset: 2px;
 }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #D7DCE6; border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
